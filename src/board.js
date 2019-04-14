@@ -11,9 +11,6 @@ function Board(props) {
   const [gameOver, updateGameOver] = useState(false);
   const [winner, updateWinner] = useState('');
   
-  
- 
-  
   useEffect(() => { 
     console.log(props)
     newBoard();
@@ -39,25 +36,18 @@ function Board(props) {
     
   }
 
-
   const play = (e) => {
 
       if(gameOver){
         return;
       }
-    
+
        let x = e.target.id.split("");
-      console.log(x)
        let col = x[0];
-       console.log(col)
       // let row = x[1];
-       
        const table = [...board];
-      
        let newArr = table[col];
-       console.log(newArr)
        let addLast = newArr.lastIndexOf(0);
-      console.log(addLast)
        if(addLast === -1){
         
          return;
@@ -66,7 +56,6 @@ function Board(props) {
        newArr[addLast] = currentPlayer === player1 ? player2 : player1;
        
       updateBoard(table);
-
       checkHoraz(board);
       checkVert(board)
       checkDigLeft(board)
@@ -88,13 +77,9 @@ function Board(props) {
       for (let row = 3; row < 7; row++) {
         for (const [col] of board.entries()) {
           if (board[row][col]) {
-            if (board[row][col] === board[row - 1][col] &&
-                board[row][col] === board[row - 2][col] &&
-                board[row][col] === board[row - 3][col]) {
-              console.log(board[row][col])
-              
+            if (board[row][col] === board[row - 1][col] && board[row][col] === board[row - 2][col] && board[row][col] === board[row - 3][col]) {
+
               updateWinner(updateWinnerFn(board[row][col]))
-              
               updateGameOver(true); 
               updateCurrentPlayer(board[row][col])
             }
@@ -109,9 +94,7 @@ function Board(props) {
     for (const [row] of board.entries()) {
       for (const [col] of board.entries()) {
         if (board[row][col]) {
-          if (board[row][col] === board[row][col + 1] && 
-              board[row][col] === board[row][col + 2] &&
-              board[row][col] === board[row][col + 3]) {
+          if (board[row][col] === board[row][col + 1] && board[row][col] === board[row][col + 2] && board[row][col] === board[row][col + 3]) {
                 console.log(board[row][col])
                 updateWinner(updateWinnerFn(board[row][col]))
                 updateGameOver(true);
@@ -124,17 +107,13 @@ function Board(props) {
   }
 }
 
-  
-
   const checkDigLeft = (board) => {
     
     
     for (let row = 3; row < 7; row++) {
       for (const [col] of board.entries()) {
         if (board[row][col]) {
-          if (board[row][col] === board[row - 1][col + 1] &&
-              board[row][col] === board[row - 2][col + 2] &&
-              board[row][col] === board[row - 3][col + 3]) {
+          if (board[row][col] === board[row - 1][col + 1] && board[row][col] === board[row - 2][col + 2] && board[row][col] === board[row - 3][col + 3]) {
             
                 updateWinner(updateWinnerFn(board[row][col]))
                 updateGameOver(true);
@@ -149,9 +128,7 @@ function Board(props) {
     for (let row = 3; row < 7; row++) {
       for (let col = 3; col < 7; col++) {
         if (board[row][col]) {
-          if (board[row][col] === board[row - 1][col - 1] &&
-              board[row][col] === board[row - 2][col - 2] &&
-              board[row][col] === board[row - 3][col - 3]) {
+          if (board[row][col] === board[row - 1][col - 1] && board[row][col] === board[row - 2][col - 2] && board[row][col] === board[row - 3][col - 3]) {
             
               updateWinner(updateWinnerFn(board[row][col]))
               updateGameOver(true);
@@ -186,14 +163,11 @@ function Board(props) {
   
 
   const renderBoard = (row, index) => {
-    //let opac = 'style={{opacity:}}'
-      
-       
-
+     
       let redDiv = <div id={trCounter.toString() + (index)} className="div redDiv" ></div>;
       let yellowDiv = <div id={trCounter.toString() + (index)} className="div yellowDiv" ></div>
 
-      let rows = row.map( (x, index) => {
+      let rows = row.map((x, index) => {
 
         if(x === 1){
           return(

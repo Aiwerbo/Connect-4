@@ -33,7 +33,7 @@
 
 .backOfTable{
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.3;
   background-color: rgb(215, 215, 215);
   width: 500px;
   height: 600px;
@@ -44,7 +44,9 @@
  opacity: 0.95;
  cursor: pointer;
 }
-
+.redDiv, .yellowDiv, .whiteDiv{
+  transition: ease 0.2s;
+}
 
 .white{
   background-color: white;
@@ -104,7 +106,7 @@
 .startGameButton{
   font-size: 24px;
   width: 505px;
-  height: 60px;
+  height: 70px;
   border-radius: 10px;
   opacity: 0.9;
   outline: none;
@@ -160,7 +162,7 @@
 
 .inputs{
   width: 490px;
-  height: 50px;
+  height: 70px;
   font-size: 24px;
   margin-bottom: 20px;
   margin-top: 20px;
