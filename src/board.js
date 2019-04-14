@@ -205,14 +205,14 @@ function Board(props) {
       <>
    
       <div className="buttonWinnerWrapper">
-      <button className="logOff" onClick={logOff}>Log Off</button>
+      <button className="logOff" onClick={logOff}>Log Off!</button>
       <button className="resetGame" onClick={newGame}>New Game!</button>
       <div className="winnerMessage">{winner}</div>
       </div>
       <div className="backOfTable"></div>
       <div className="playersWrapper">
-      <p className="players" style={{opacity: currentPlayer === player2 ? "1" : '0.5' }}>Black: {props.currentPlayer1}</p>
-      <p className="players" style={{opacity: currentPlayer === player1 ? "1" : '0.5' }}>White: {props.currentPlayer2}</p>
+      <p className="players" style={{opacity: currentPlayer === player2 ? "1" : '0.5'}}>Black:  {props.currentPlayer1}</p>
+      <p className="players" style={{opacity: currentPlayer === player1 ? "1" : '0.5'}}>White:  {props.currentPlayer2}</p>
       </div> 
       <table className="table">
       
