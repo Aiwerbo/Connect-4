@@ -6,7 +6,7 @@ function Board(props) {
   
   const player1 = 1;
   const player2 = 2;
-  const [currentPlayer, updateCurrentPlayer] = useState(null);
+  const [currentPlayer, updateCurrentPlayer] = useState(player2);
   const [board, updateBoard] = useState([]);
   const [gameOver, updateGameOver] = useState(false);
   const [winner, updateWinner] = useState('');
@@ -76,14 +76,15 @@ function Board(props) {
   }
 
   const newGame = () => {
+    console.log(currentPlayer)
     newBoard();
     updateWinner('')
     updateGameOver(false);
-    updateCurrentPlayer(player2);
+    
   }
 
   const checkHoraz = (board) => {
-
+    
       for (let row = 3; row < 7; row++) {
         for (const [col] of board.entries()) {
           if (board[row][col]) {
@@ -93,8 +94,9 @@ function Board(props) {
               console.log(board[row][col])
               
               updateWinner(updateWinnerFn(board[row][col]))
+              
               updateGameOver(true); 
-              updateCurrentPlayer(player2)
+              updateCurrentPlayer(board[row][col])
             }
             
           }
@@ -113,7 +115,7 @@ function Board(props) {
                 console.log(board[row][col])
                 updateWinner(updateWinnerFn(board[row][col]))
                 updateGameOver(true);
-                updateCurrentPlayer(player2)
+                updateCurrentPlayer(board[row][col])
         }
      
       }
@@ -136,7 +138,7 @@ function Board(props) {
             
                 updateWinner(updateWinnerFn(board[row][col]))
                 updateGameOver(true);
-                updateCurrentPlayer(player2)
+                updateCurrentPlayer(board[row][col])
           }
         }
       }
@@ -153,7 +155,7 @@ function Board(props) {
             
               updateWinner(updateWinnerFn(board[row][col]))
               updateGameOver(true);
-              updateCurrentPlayer(player2)
+              updateCurrentPlayer(board[row][col])
           }
         }
         
@@ -184,38 +186,42 @@ function Board(props) {
   
 
   const renderBoard = (row, index) => {
-    
-      let redDiv = <div id={trCounter.toString() + (index)} className="div redDiv" onClick={play}></div>;
-      let yellowDiv = <div id={trCounter.toString() + (index)} className="div yellowDiv" onClick={play}></div>
+    //let opac = 'style={{opacity:}}'
+      
+       
+
+      let redDiv = <div id={trCounter.toString() + (index)} className="div redDiv" ></div>;
+      let yellowDiv = <div id={trCounter.toString() + (index)} className="div yellowDiv" ></div>
 
       let rows = row.map( (x, index) => {
 
         if(x === 1){
           return(
-            <td key={index + 1} className="td">{redDiv}</td>
+            <td onClick={play} id={trCounter.toString() + (index)} key={index + 1} className="td">{redDiv}</td>
           );
         }
         if(x === 2){
           return(
-            <td key={index + 1} className="td">{yellowDiv}</td>
+            <td onClick={play} id={trCounter.toString() + (index)} key={index + 1} className="td">{yellowDiv}</td>
           );
         }
 
         return(
-          <td key={index + 1} className="td">
-            <div id={trCounter.toString() + (index)} className="div whiteDiv" onClick={play}/>
+          <td key={index + 1} className="td" onClick={play} id={trCounter.toString() + (index)}>
+            <div id={trCounter.toString() + (index)} className="div whiteDiv" />
           </td>
       );
       })
-
+      
       trCounter++;
         return(
-          <tr className="tr" key={index +1}>
+          <tr id={trCounter.toString() -1} className="tr" key={index +1}>
           {rows}
         </tr>
         )
+        
       }
-    
+      
     
     const table = board.map(renderBoard) 
     
@@ -231,8 +237,8 @@ function Board(props) {
       </div>
       <div className="backOfTable"></div>
       <div className="playersWrapper">
-      <p className="players">Black: {props.currentPlayer1}</p>
-      <p className="players">White: {props.currentPlayer2}</p>
+      <p className="players" style={{opacity: currentPlayer === player2 ? "1" : '0.5' }}>Black: {props.currentPlayer1}</p>
+      <p className="players" style={{opacity: currentPlayer === player1 ? "1" : '0.5' }}>White: {props.currentPlayer2}</p>
       </div> 
       <table className="table">
       
