@@ -41,7 +41,7 @@ function App() {
       </>
     )
   }
-  console.log(currentPlayer1)
+  
     return (
  
       <div className="App">

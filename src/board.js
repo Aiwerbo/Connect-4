@@ -13,7 +13,7 @@ function Board(props) {
   const [looser, updateLooser] = useState(null);
   
   useEffect(() => { 
-    console.log(props)
+
     newBoard();
     
   }, []);
@@ -21,7 +21,7 @@ function Board(props) {
     const newBoard = () => {
     
       let board = [];
-      for(var i=0; i<7; i++) {
+      for(let i=0; i<7; i++) {
       board.push(new Array(6).fill(0));
       updateBoard(board)
   }
@@ -50,8 +50,9 @@ function Board(props) {
       // let row = x[1];
        const table = [...board];
        let newArr = table[col];
-       console.log(newArr)
+
        let addLast = newArr.lastIndexOf(0);
+
        if(addLast === -1){
         
          return;
@@ -69,7 +70,7 @@ function Board(props) {
   }
 
   const newGame = () => {
-    console.log(currentPlayer)
+    
     newBoard();
     updateWinner('')
     updateGameOver(false);
@@ -101,7 +102,7 @@ function Board(props) {
       for (const [col] of board.entries()) {
         if (board[row][col]) {
           if (board[row][col] === board[row][col + 1] && board[row][col] === board[row][col + 2] && board[row][col] === board[row][col + 3]) {
-                console.log(board[row][col])
+
                 updateWinner(updateWinnerFn(board[row][col]))
                 updateGameOver(true);
                 updateCurrentPlayer(null)
@@ -154,7 +155,7 @@ function Board(props) {
         }
       }
     }
-    console.log('draw')
+
     updateWinner("It's a draw");
     updateGameOver(true);
     updateCurrentPlayer(null)

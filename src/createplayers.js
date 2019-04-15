@@ -10,7 +10,7 @@ function CreatePlayers (props){
   
 
   const startGame = (e) => {
-    console.log(props)
+
     e.preventDefault();
     const login = false;
     const changePage = true;
