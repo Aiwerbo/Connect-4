@@ -10,6 +10,7 @@ function Board(props) {
   const [board, updateBoard] = useState([]);
   const [gameOver, updateGameOver] = useState(false);
   const [winner, updateWinner] = useState('');
+  const [looser, updateLooser] = useState(null);
   
   useEffect(() => { 
     console.log(props)
@@ -28,9 +29,11 @@ function Board(props) {
 
   const updateWinnerFn = (player) => {
     if(player === 1){
+      updateLooser(player1)
       return 'The winner is ' + props.currentPlayer1
     }
     else{
+      updateLooser(player2)
       return 'The winner is ' + props.currentPlayer2
     }
     
@@ -70,7 +73,7 @@ function Board(props) {
     newBoard();
     updateWinner('')
     updateGameOver(false);
-    
+    updateCurrentPlayer(looser)
   }
 
   const checkHoraz = (board) => {
@@ -82,7 +85,9 @@ function Board(props) {
 
               updateWinner(updateWinnerFn(board[row][col]))
               updateGameOver(true); 
-              updateCurrentPlayer(board[row][col])
+              updateCurrentPlayer(null)
+              
+              
             }
             
           }
@@ -99,7 +104,7 @@ function Board(props) {
                 console.log(board[row][col])
                 updateWinner(updateWinnerFn(board[row][col]))
                 updateGameOver(true);
-                updateCurrentPlayer(board[row][col])
+                updateCurrentPlayer(null)
         }
      
       }
@@ -118,7 +123,7 @@ function Board(props) {
             
                 updateWinner(updateWinnerFn(board[row][col]))
                 updateGameOver(true);
-                updateCurrentPlayer(board[row][col])
+                updateCurrentPlayer(null)
           }
         }
       }
@@ -133,7 +138,7 @@ function Board(props) {
             
               updateWinner(updateWinnerFn(board[row][col]))
               updateGameOver(true);
-              updateCurrentPlayer(board[row][col])
+              updateCurrentPlayer(null)
           }
         }
         
@@ -152,7 +157,8 @@ function Board(props) {
     console.log('draw')
     updateWinner("It's a draw");
     updateGameOver(true);
-    updateCurrentPlayer(player2)
+    updateCurrentPlayer(null)
+    updateLooser(looser)
     //return 'draw';    
   }
 
@@ -164,7 +170,7 @@ function Board(props) {
   
 
   const renderBoard = (row, index) => {
-     
+  
       let redDiv = <div id={trCounter.toString() + (index)} className="div redDiv" ></div>;
       let yellowDiv = <div id={trCounter.toString() + (index)} className="div yellowDiv" ></div>
 
