@@ -47,6 +47,7 @@ function Board(props) {
       // let row = x[1];
        const table = [...board];
        let newArr = table[col];
+       console.log(newArr)
        let addLast = newArr.lastIndexOf(0);
        if(addLast === -1){
         
