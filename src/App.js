@@ -4,18 +4,11 @@ import './App.css';
 import CreatePlayers from './createplayers.js'
 import Board from './board.js'
 
-
-
-
-
 function App() {
   
   const [createPlayer, updateCreatePlayer] = useState(true);
   const [currentPlayer1, updatePlayer1] = useState('');
   const [currentPlayer2, updatePlayer2] = useState('');
-  
-  
-  
 
   const onLogin = (player1, player2, login) => {
 
@@ -28,7 +21,6 @@ function App() {
   const logOff = (logoff) => {
     
     updateCreatePlayer(logoff);
-    
 
   }
 

@@ -45,9 +45,7 @@ function Board(props) {
         return;
       }
 
-       let x = e.target.id.split("");
-       let col = x[0];
-      // let row = x[1];
+       let col = e.target.dataset.col
        const table = [...board];
        let newArr = table[col];
 
@@ -172,32 +170,32 @@ function Board(props) {
 
   const renderBoard = (row, index) => {
   
-      let redDiv = <div id={trCounter.toString() + (index)} className="div redDiv" ></div>;
-      let yellowDiv = <div id={trCounter.toString() + (index)} className="div yellowDiv" ></div>
+      let redDiv = <div data-col={trCounter.toString()} className="div redDiv" ></div>;
+      let yellowDiv = <div data-col={trCounter.toString()} className="div yellowDiv" ></div>
 
       let rows = row.map((x, index) => {
 
         if(x === 1){
           return(
-            <td onClick={play} id={trCounter.toString() + (index)} key={index + 1} className="td">{redDiv}</td>
+            <td data-col={trCounter.toString()} onClick={play} key={index + 1} className="td">{redDiv}</td>
           );
         }
         if(x === 2){
           return(
-            <td onClick={play} id={trCounter.toString() + (index)} key={index + 1} className="td">{yellowDiv}</td>
+            <td data-col={trCounter.toString()} onClick={play} key={index + 1} className="td">{yellowDiv}</td>
           );
         }
 
         return(
-          <td key={index + 1} className="td" onClick={play} id={trCounter.toString() + (index)}>
-            <div id={trCounter.toString() + (index)} className="div whiteDiv" />
+          <td data-col={trCounter.toString()} key={index + 1} className="td" onClick={play}>
+            <div data-col={trCounter.toString()} className="div whiteDiv" />
           </td>
       );
       })
       
       trCounter++;
         return(
-          <tr id={trCounter.toString() -1} className="tr" key={index +1}>
+          <tr className="tr" key={index +1}>
           {rows}
         </tr>
         )
