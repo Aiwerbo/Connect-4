@@ -95,7 +95,7 @@ function Board(props) {
         
   }
   const checkVert = (board) => {
-
+    console.log(board)
     for (const [row] of board.entries()) {
       for (const [col] of board.entries()) {
         if (board[row][col]) {
