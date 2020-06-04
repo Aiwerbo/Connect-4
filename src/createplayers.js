@@ -39,7 +39,7 @@ function CreatePlayers (props){
     <>
       <img className="background" src={background} alt=""></img>
       <div className="startPageWrapper">
-      <div className="header">Advanced Javascript Labb 4</div>
+      <div className="header">Connect 4</div>
       <form>
       <label className="playerText">Player Black</label><br/>
       <input className="inputs" type="text" maxLength="15" placeholder="Name:" onChange={inputPlayer1}></input><br/>
